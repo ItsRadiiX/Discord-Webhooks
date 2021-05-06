@@ -1,10 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -146,14 +139,3 @@ Project Link: [https://github.com/ItsRadiiX/Definity-Webhooks](https://github.co
 
 * [Introducing JSON](https://www.json.org/json-en.html)
 * [Discord embed visualizer](https://leovoel.github.io/embed-visualizer/)
-
-
-
-[contributors-shield]: https://img.shields.io/github/contributors/ItsRadiiX/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/ItsRadiiX/Definity-Webhooks/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/ItsRadiiX/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/ItsRadiiX/Definity-Webhooks/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ItsRadiiX/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/ItsRadiiX/Definity-Webhooks/issues
-[license-shield]: https://img.shields.io/github/license/ItsRadiiX/repo.svg?style=for-the-badge
-[license-url]: https://github.com/ItsRadiiX/Definity-Webhooks/blob/master/LICENSE.txt
