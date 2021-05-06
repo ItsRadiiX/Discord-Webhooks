@@ -60,16 +60,16 @@ Currently the API supports the following:
 - Custom avatar URL
 - Custom content message
 - Easy creation of embedded messages and all its properties.
-- - Embed title
-- - Embed description
-- - Title URL
-- - Embed color
-- - Footer icon URL & text
-- - Footer TimeStamp
-- - Thumbnail URL
-- - Image URL
-- - Custom author: name, URL + icon URL
-- - Fields: used to create additional message field in the embed (Support for blank space)
+   - Embed title
+   - Embed description
+   - Title URL
+   - Embed color
+   - Footer icon URL & text
+   - Footer TimeStamp
+   - Thumbnail URL
+   - Image URL
+   - Custom author: name, URL + icon URL
+   - Fields: used to create additional message field in the embed (Support for blank space)
 
 
 ### Built With
