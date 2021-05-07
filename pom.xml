@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.itsradiix</groupId>
-    <artifactId>DiscordWebHookAPI</artifactId>
+    <artifactId>DefinityWebHookAPI</artifactId>
     <version>1.0</version>
 
     <properties>

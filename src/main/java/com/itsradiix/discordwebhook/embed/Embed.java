@@ -1,34 +1,40 @@
-package com.itsradiix.embed;
+package com.itsradiix.discordwebhook.embed;
 
-import com.itsradiix.embed.models.*;
-import com.itsradiix.utils.Utils;
+import com.itsradiix.discordwebhook.embed.models.*;
+import com.itsradiix.discordwebhook.utils.Utils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Embed class represents an Embedded Message that can be send with a DiscordWebHook message.
+ * The Class has an internal Builder Class to easily instantiate an Object.
+ * Make sure to read the wiki page on our GitHub to understand how to use this effectively.
+ * https://github.com/ItsRadiiX/Definity-Webhooks/wiki
+ */
 public class Embed {
 
-	// Embed variables
+	// Important Embed variables
 	private String title;
 	private String description;
 	private String url;
 	private int color;
 	private String timestamp;
 
-	// Footer
+	// Footer variable
 	private Footer footer;
 
-	// Thumbnail
+	// Thumbnail variable
 	private Thumbnail thumbnail;
 
-	// Image
+	// Image variable
 	private Image image;
 
-	// Author
+	// Author variable
 	private Author author;
 
-	// Fields
+	// Fields variable
 	private List<Field> fields;
 
 	// Constructor
@@ -46,8 +52,14 @@ public class Embed {
 		this.fields = fields;
 	}
 
+	/**
+	 * This allows you to create an Embed without using the Builder class. (Not recommended)
+	 */
 	public Embed() {}
 
+	/**
+	 * @return String Title of the embedded message.
+	 */
 	public String getTitle() {
 		return title;
 	}
@@ -56,6 +68,9 @@ public class Embed {
 		this.title = title;
 	}
 
+	/**
+	 * @return String Description of the embedded message.
+	 */
 	public String getDescription() {
 		return description;
 	}
@@ -64,6 +79,9 @@ public class Embed {
 		this.description = description;
 	}
 
+	/**
+	 * @return String URL when clicked on the title.
+	 */
 	public String getUrl() {
 		return url;
 	}
@@ -72,6 +90,9 @@ public class Embed {
 		this.url = url;
 	}
 
+	/**
+	 * @return int Decimal color of the embedded message.
+	 */
 	public int getColor() {
 		return color;
 	}
@@ -80,6 +101,9 @@ public class Embed {
 		this.color = color;
 	}
 
+	/**
+	 * @return String of TimeStamp displayed in Footer.
+	 */
 	public String getTimestamp() {
 		return timestamp;
 	}
@@ -88,6 +112,9 @@ public class Embed {
 		this.timestamp = timestamp;
 	}
 
+	/**
+	 * @return Footer Get the Footer Object of an embedded message.
+	 */
 	public Footer getFooter() {
 		return footer;
 	}
@@ -96,6 +123,9 @@ public class Embed {
 		this.footer = footer;
 	}
 
+	/**
+	 * @return Thumbnail Get the Thumbnail Object of an embedded message.
+	 */
 	public Thumbnail getThumbnail() {
 		return thumbnail;
 	}
@@ -112,6 +142,9 @@ public class Embed {
 		this.image = image;
 	}
 
+	/**
+	 * @return Author Get the Author Object of an embedded message.
+	 */
 	public Author getAuthor() {
 		return author;
 	}
@@ -120,6 +153,9 @@ public class Embed {
 		this.author = author;
 	}
 
+	/**
+	 * @return List Get all Fields of an embedded message.
+	 */
 	public List<Field> getFields() {
 		return fields;
 	}
@@ -128,6 +164,11 @@ public class Embed {
 		this.fields = fields;
 	}
 
+	/**
+	 * The Builder class allows for easy creation of an Embed Object.
+	 * Make sure to read the wiki page on our GitHub to understand how to use this effectively.
+	 * (https://github.com/ItsRadiiX/Definity-Webhooks/wiki)
+	 */
 	public static class Builder {
 
 		// Embed variables
@@ -219,6 +260,12 @@ public class Embed {
 			return this;
 		}
 
+		/**
+		 * The build() method will allow you to finalize your Builder class by building the Embed Object.
+		 * IMPORTANT: Use this method at the end of your statement.
+		 *
+		 * @return Embed Object to instantiate an Embed Object.
+		 */
 		public Embed build(){
 			return new Embed(title, description, url, color, timestamp, footer, thumbnail, image, author, fields);
 		}
