@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.itsradiix.discordwebhook"},{"l":"com.itsradiix.discordwebhook.embed"},{"l":"com.itsradiix.discordwebhook.embed.models"},{"l":"com.itsradiix.discordwebhook.utils"}];updateSearchResults();
