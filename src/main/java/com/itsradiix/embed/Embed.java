@@ -1,7 +1,7 @@
 package com.itsradiix.embed;
 
 import com.itsradiix.embed.models.*;
-import com.itsradiix.utils.ColorUtils;
+import com.itsradiix.utils.Utils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,29 +10,29 @@ import java.util.List;
 public class Embed {
 
 	// Embed variables
-	private final String title;
-	private final String description;
-	private final String url;
-	private final int color;
-	private final String timestamp;
+	private String title;
+	private String description;
+	private String url;
+	private int color;
+	private String timestamp;
 
 	// Footer
-	private final Footer footer;
+	private Footer footer;
 
 	// Thumbnail
-	private final Thumbnail thumbnail;
+	private Thumbnail thumbnail;
 
 	// Image
-	private final Image image;
+	private Image image;
 
 	// Author
-	private final Author author;
+	private Author author;
 
 	// Fields
-	private final List<Field> fields;
+	private List<Field> fields;
 
 	// Constructor
-	private Embed(String title, String description, String url, int color, String timestamp,
+	public Embed(String title, String description, String url, int color, String timestamp,
 	             Footer footer, Thumbnail thumbnail, Image image, Author author, List<Field> fields) {
 		this.title = title;
 		this.description = description;
@@ -46,44 +46,86 @@ public class Embed {
 		this.fields = fields;
 	}
 
+	public Embed() {}
+
 	public String getTitle() {
 		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getUrl() {
 		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public int getColor() {
 		return color;
 	}
 
+	public void setColor(int color) {
+		this.color = color;
+	}
+
 	public String getTimestamp() {
 		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public Footer getFooter() {
 		return footer;
 	}
 
+	public void setFooter(Footer footer) {
+		this.footer = footer;
+	}
+
 	public Thumbnail getThumbnail() {
 		return thumbnail;
+	}
+
+	public void setThumbnail(Thumbnail thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 	public Image getImage() {
 		return image;
 	}
 
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	public Author getAuthor() {
 		return author;
 	}
 
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
 	public List<Field> getFields() {
 		return fields;
+	}
+
+	public void setFields(List<Field> fields) {
+		this.fields = fields;
 	}
 
 	public static class Builder {
@@ -126,7 +168,7 @@ public class Embed {
 		}
 
 		public Builder color(String hex){
-			this.color = ColorUtils.hexToDecimal(hex);
+			this.color = Utils.hexToDecimal(hex);
 			return this;
 		}
 
