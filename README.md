@@ -14,6 +14,8 @@
     <br />
     <br />
     <a href="https://github.com/ItsRadiiX/Definity-Webhooks/issues">Report Bug</a>
+    .
+    <a href="https://itsradiix.github.io/Definity-Webhooks/javadocs/">JavaDocs</a>
     ·
     <a href="https://github.com/ItsRadiiX/Definity-Webhooks/issues">Request Feature</a>
   </p>
