@@ -128,7 +128,7 @@ See the [open issues](https://github.com/ItsRadiiX/Definity-Webhooks/issues) for
 <!-- CONTACT -->
 ## Contact
 
-Bryan Suk - [ItsRadiiX#0001](https://discord.definitymc.com) - radiixbs@gmail.com
+Bryan Suk - [ItsRadiiX](https://discord.definitymc.com) - radiixbs@gmail.com
 
 Project Link: [https://github.com/ItsRadiiX/Definity-Webhooks](https://github.com/ItsRadiiX/Definity-Webhooks)
 
