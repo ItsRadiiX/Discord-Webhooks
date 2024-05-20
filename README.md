@@ -103,6 +103,8 @@ To get a local copy up and running follow these simple steps.
 Currently, we only support depending on our project using Maven.
 If you wish to use Gradle, you can download the latest JAR and import it directly in your project.
 
+To use our dependency, you need to have access to [Github Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages#authenticating-to-github-packages).
+
 ### Installation
 
 Add the following to your pom.xml:
