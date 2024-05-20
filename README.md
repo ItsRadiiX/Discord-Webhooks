@@ -1,23 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/ItsRadiiX/Definity-Webhooks">
+  <a href="https://github.com/ItsRadiiX/Discord-Webhooks">
     <img src="https://i.imgur.com/gXGTSRH.png" alt="Logo" width="800" height="400">
   </a>
 
-  <h3 align="center">Definity Webhooks</h3>
+  <h3 align="center">Discord Webhooks</h3>
 
   <p align="center">
     API for sending Webhook messages to your Discord Webhooks
     <br />
-    <a href="https://github.com/ItsRadiiX/Definity-Webhooks/wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ItsRadiiX/Discord-Webhooks/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ItsRadiiX/Definity-Webhooks/issues">Report Bug</a>
+    <a href="https://github.com/ItsRadiiX/Discord-Webhooks/issues">Report Bug</a>
     .
-    <a href="https://itsradiix.github.io/Definity-Webhooks/javadocs/">JavaDocs</a>
+    <a href="https://itsradiix.github.io/Discord-Webhooks/javadocs/">JavaDocs</a>
     ·
-    <a href="https://github.com/ItsRadiiX/Definity-Webhooks/issues">Request Feature</a>
+    <a href="https://github.com/ItsRadiiX/Discord-Webhooks/issues">Request Feature</a>
   </p>
 </p>
 
@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Definity Webhooks is a free to use API for sending messages to your Discord Webhooks!
+Discord Webhooks is a free to use API for sending messages to your Discord Webhooks!
 It allows for easy message building due to the Builder design pattern.
 
 Features available in version 1.0.3
@@ -110,7 +110,7 @@ Add the following to your pom.xml:
 ```
 <dependency>
   <groupId>com.itsradiix</groupId>
-  <artifactId>definity-webhookapi</artifactId>
+  <artifactId>Discord-webhookapi</artifactId>
   <version>latest</version>
 </dependency>
 ```
@@ -118,7 +118,7 @@ Add the following to your pom.xml:
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/ItsRadiiX/Definity-Webhooks/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/ItsRadiiX/Discord-Webhooks/issues) for a list of proposed features (and known issues).
 
 
 
@@ -132,7 +132,7 @@ Check the LICENSE file in our project folder
 
 Bryan Suk - [ItsRadiiX](https://discordapp.com/users/286875783027228693) - mail@bryansuk.nl
 
-Project Link: [https://github.com/ItsRadiiX/Definity-Webhooks](https://github.com/ItsRadiiX/Definity-Webhooks)
+Project Link: [https://github.com/ItsRadiiX/Discord-Webhooks](https://github.com/ItsRadiiX/Discord-Webhooks)
 
 
 

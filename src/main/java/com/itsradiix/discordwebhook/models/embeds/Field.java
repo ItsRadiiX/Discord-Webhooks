@@ -5,7 +5,7 @@ package com.itsradiix.discordwebhook.models.embeds;
  * Fields provide structured data within the embedded message.
  *
  * <p>Make sure to read the wiki page on our GitHub to understand how to use this effectively:
- * <a href="https://github.com/ItsRadiiX/Definity-Webhooks/wiki">Definity-Webhooks Wiki</a></p>
+ * <a href="https://github.com/ItsRadiiX/Discord-Webhooks/wiki">Discord-Webhooks Wiki</a></p>
  *
  * @author ItsRadiiX
  * @version 2.0

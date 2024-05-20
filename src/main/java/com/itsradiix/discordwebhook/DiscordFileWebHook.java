@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * DiscordFileWebhook allows for easy message sending to your Servers through a webhook!
  * This class represents a Discord Webhook Message with the ability to send Files!
- * Make sure to read (<a href="https://github.com/ItsRadiiX/Definity-Webhooks/wiki">the wiki page on our GitHub</a>) to understand how to use this effectively.
+ * Make sure to read (<a href="https://github.com/ItsRadiiX/Discord-Webhooks/wiki">the wiki page on our GitHub</a>) to understand how to use this effectively.
  * Also make sure to understand (<a href="https://discord.com/developers/docs/resources/webhook">Discord's documentation of Webhooks</a>).
  *
  * @author ItsRadiiX

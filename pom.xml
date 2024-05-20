@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.itsradiix</groupId>
-    <artifactId>definity-webhookapi</artifactId>
+    <artifactId>discord-webhookapi</artifactId>
     <version>2.0</version>
 
     <properties>
@@ -18,7 +18,7 @@
         <repository>
             <id>github</id>
             <name>GitHub ItsRadiiX Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/ItsRadiiX/Definity-Webhooks</url>
+            <url>https://maven.pkg.github.com/ItsRadiiX/Discord-Webhooks</url>
         </repository>
     </distributionManagement>
 

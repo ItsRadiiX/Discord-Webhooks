@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
  * Thumbnails provide a small preview of an image or video within the embedded message.
  *
  * <p>Make sure to read the wiki page on our GitHub to understand how to use this effectively:
- * <a href="https://github.com/ItsRadiiX/Definity-Webhooks/wiki">Definity-Webhooks Wiki</a></p>
+ * <a href="https://github.com/ItsRadiiX/Discord-Webhooks/wiki">Discord-Webhooks Wiki</a></p>
  *
  * @author ItsRadiiX
  * @version 2.0
