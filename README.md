@@ -108,6 +108,11 @@ If you wish to use Gradle, you can download the latest JAR and import it directl
 Add the following to your pom.xml:
 
 ```
+<dependency>
+  <groupId>com.itsradiix</groupId>
+  <artifactId>definity-webhookapi</artifactId>
+  <version>latest</version>
+</dependency>
 ```
 
 <!-- ROADMAP -->
