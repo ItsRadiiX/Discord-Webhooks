@@ -1,4 +1,5 @@
 com.itsradiix.discordwebhook
-com.itsradiix.discordwebhook.embed
-com.itsradiix.discordwebhook.embed.models
+com.itsradiix.discordwebhook.models
+com.itsradiix.discordwebhook.models.embeds
+com.itsradiix.discordwebhook.models.poll
 com.itsradiix.discordwebhook.utils

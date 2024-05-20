@@ -1,140 +1,272 @@
 package com.itsradiix.discordwebhook;
 
-import com.itsradiix.discordwebhook.embed.Embed;
-import com.itsradiix.discordwebhook.utils.Utils;
+import com.itsradiix.discordwebhook.models.Attachment;
+import com.itsradiix.discordwebhook.models.Mentions;
+import com.itsradiix.discordwebhook.models.embeds.Embed;
+import com.itsradiix.discordwebhook.models.poll.Poll;
+import com.itsradiix.discordwebhook.utils.NetworkUtils;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Definity's DiscordWebhook allows for easy message sending to your Servers through a webhook!
- * This class represents a Discord Webhook Message, which can be customized with its internal Builder class.
- * Make sure to read the wiki page on our GitHub to understand how to use this effectively.
- * (https://github.com/ItsRadiiX/Definity-Webhooks/wiki)
+ * DiscordWebhook allows for easy message sending to your Servers through a webhook!
+ * This class represents a Discord Webhook Message.
+ * Make sure to read (<a href="https://github.com/ItsRadiiX/Definity-Webhooks/wiki">the wiki page on our GitHub</a>) to understand how to use this effectively.
+ * Also make sure to understand (<a href="https://discord.com/developers/docs/resources/webhook">Discord's documentation of Webhooks</a>).
  *
- * @author ItsRadiiX, GamingMineblox
- * @version 1.0
- * @since 2021-05-06
+ * @author ItsRadiiX
+ * @version 2.0
+ * @since 2024-05-19
  */
+
+@SuppressWarnings("unused")
 public class DiscordWebHook {
 
-	private final String username;
-	private final String avatar_url;
-	private final String content;
-	private final List<Embed> embeds;
+    /**
+     * Content of the Webhook.
+     * Maximum length of 2000 characters.
+     */
+    private String content;
 
-	/**
-	 * Private constructor for creating an DiscordWebHook Message.
-	 * This constructor is not public due to our internal Builder class.
-	 * @param username This represents the username of the message that has been send.
-	 * @param avatar_url This represents the icon of the message (Avatar).
-	 * @param content This represents the text that will be displayed in the Message.
-	 * @param embeds This represents all the embedded messages you can send in your WebHook message.
-	 */
-	private DiscordWebHook(String username, String avatar_url, String content, List<Embed> embeds) {
-		this.username = username;
-		this.avatar_url = avatar_url;
-		this.content = content;
-		this.embeds = embeds;
-	}
+    /**
+     * Overrides the default username of the webhook.
+     */
+    private String username;
 
-	/**
-	 * @return String Username of the WebHook Message.
-	 */
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * Overrides the default avatar of the webhook.
+     */
+    private String avatar_url;
 
-	/**
-	 * @return String Avatar_URL of the WebHook Message.
-	 */
-	public String getAvatar_url() {
-		return avatar_url;
-	}
+    /**
+     * True if this is a Text-To-Speech message.
+     */
+    private boolean tts;
 
-	/**
-	 * @return String Text content of the WebHook Message.
-	 */
-	public String getContent() {
-		return content;
-	}
+    /**
+     * Embedded rich content.
+     */
+    private List<Embed> embeds;
 
-	/**
-	 * @return List of Embed objects of the WebHook Message.
-	 */
-	public List<Embed> getEmbeds() {
-		return embeds;
-	}
+    /**
+     * Allowed mentions for the message.
+     */
+    private Mentions allowed_mentions;
 
-	/**
-	 * This static method will allow you to send your Object to the given WebHook through the URL
-	 * @param URL This represents the link of the webhook.
-	 * @param message This represents the Discord webhook object. (Creatable via the internal Builder)
-	 */
-	public static void sendMessage(String URL, DiscordWebHook message){
-		Utils.postToAPI(URL, Utils.serializeObject(message));
-	}
+    /**
+     * Message flags combined as a bitfield.
+     * (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
+     */
+    private int flags;
 
-	/**
-	 * The Builder class is used to easily build DiscordWebHook Objects.
-	 * Make sure to read the wiki page on our GitHub to understand how to use this effectively.
-	 * (https://github.com/ItsRadiiX/Definity-Webhooks/wiki)
-	 */
-	public static class Builder {
+    /**
+     * Name of thread to create.
+     * (requires the webhook channel to be a forum or media channel)
+     */
+    private String thread_name;
 
-		// Builder variables
-		private String username;
-		private String avatar_url;
-		private String content;
-		private List<Embed> embeds;
+    /**
+     * Array of tag ids to apply to the thread.
+     * (requires the webhook channel to be a forum or media channel)
+     */
+    private List<Integer> applied_tags;
 
-		/**
-		 * @param username Set the username of the DiscordWebHook message.
-		 * @return Builder Object for further creation of this Builder class.
-		 */
-		public Builder username(String username){
-			this.username = username;
-			return this;
-		}
+    /**
+     * A poll!
+     */
+    private Poll poll;
 
-		/**
-		 * @param avatar_url Set the Avatar URL of the DiscordWebHook message.
-		 * @return Builder Object for further creation of this Builder class.
-		 */
-		public Builder avatar_url(String avatar_url){
-			this.avatar_url = avatar_url;
-			return this;
-		}
+    /**
+     * Attachment objects with filename and description
+     */
+    private List<Attachment> attachments;
 
-		/**
-		 * @param content Set the text content of the DiscordWebHook message.
-		 * @return Builder Object for further creation of this Builder class.
-		 */
-		public Builder content(String content){
-			this.content = content;
-			return this;
-		}
+    /**
+     * Default constructor.
+     */
+    public DiscordWebHook(){}
 
-		/**
-		 * the embed() method adds an embedded message.
-		 * If the list of embedded message does not exist yet it will be created automatically.
-		 * @param embed Add an embedded message to your DiscordWebHook message.
-		 * @return Builder Object for further creation of this Builder class.
-		 */
-		public Builder embed(Embed embed){
-			if (embeds == null){ embeds = new ArrayList<>(); }
-			embeds.add(embed);
-			return this;
-		}
+    /**
+     * Constructor with parameters.
+     *
+     * @param content The content of the webhook message.
+     * @param username The username to override the default webhook username.
+     * @param avatar_url The avatar URL to override the default webhook avatar.
+     * @param tts Whether the message should be sent as Text-To-Speech.
+     * @param embeds The embedded rich content.
+     * @param allowed_mentions The allowed mentions for the message.
+     * @param flags The message flags combined as a bitfield.
+     * @param thread_name The name of the thread to create.
+     * @param applied_tags The array of tag ids to apply to the thread.
+     * @param poll The poll to include in the message.
+     */
+    private DiscordWebHook(String content,
+                           String username,
+                           String avatar_url,
+                           boolean tts,
+                           List<Embed> embeds,
+                           Mentions allowed_mentions,
+                           int flags,
+                           String thread_name,
+                           List<Integer> applied_tags,
+                           Poll poll) {
+        this.content = content;
+        this.username = username;
+        this.avatar_url = avatar_url;
+        this.tts = tts;
+        this.embeds = embeds;
+        this.allowed_mentions = allowed_mentions;
+        this.flags = flags;
+        this.thread_name = thread_name;
+        this.applied_tags = applied_tags;
+        this.poll = poll;
+    }
 
-		/**
-		 * The build() method will allow you to finalize your Builder class by building the DiscordWebHook Object.
-		 * IMPORTANT: Use this method at the end of your statement.
-		 *
-		 * @return DiscordWebHook Object to instantiate the DiscordWebHook.
-		 */
-		public DiscordWebHook build(){
-			return new DiscordWebHook(username, avatar_url, content, embeds);
-		}
-	}
+    /**
+     * Sets the content of the webhook message.
+     *
+     * @param content The content to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook content(String content){
+        this.content = content;
+        return this;
+    }
+
+    /**
+     * Sets the username to override the default webhook username.
+     *
+     * @param username The username to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook username(String username){
+        this.username = username;
+        return this;
+    }
+
+    /**
+     * Sets the avatar URL to override the default webhook avatar.
+     *
+     * @param avatar_url The avatar URL to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook avatarUrl(String avatar_url){
+        this.avatar_url = avatar_url;
+        return this;
+    }
+
+    /**
+     * Enables or disables Text-To-Speech for the message.
+     *
+     * @param enabled True to enable TTS, false to disable.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook textToSpeech(boolean enabled){
+        this.tts = enabled;
+        return this;
+    }
+
+    /**
+     * Sets the embedded rich content for the message.
+     *
+     * @param embeds The list of embeds to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook setEmbeds(List<Embed> embeds){
+        this.embeds = embeds;
+        return this;
+    }
+
+    /**
+     * Adds one or more embeds to the message.
+     *
+     * @param embeds The embeds to add.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook addEmbeds(Embed... embeds){
+        for (Embed embed : embeds){
+            if (this.embeds.contains(embed)) continue;
+            this.embeds.add(embed);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the allowed mentions for the message.
+     *
+     * @param mentions The mentions to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook mentions(Mentions mentions){
+        this.allowed_mentions = mentions;
+        return this;
+    }
+
+    /**
+     * Sets the message flags.
+     *
+     * @param flag The flag to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook flags(int flag){
+        this.flags = flag;
+        return this;
+    }
+
+    /**
+     * Sets the name of the thread to create.
+     *
+     * @param thread_name The thread name to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook threadName(String thread_name){
+        this.thread_name = thread_name;
+        return this;
+    }
+
+    /**
+     * Sets the tags to apply to the thread.
+     *
+     * @param applied_tags The list of tags to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook setAppliedTags(List<Integer> applied_tags){
+        this.applied_tags = applied_tags;
+        return this;
+    }
+
+    /**
+     * Adds one or more tags to the thread.
+     *
+     * @param applied_tags The tags to add.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook addAppliedTags(int... applied_tags){
+        for (int integer : applied_tags){
+            if (this.applied_tags.contains(integer)) continue;
+            this.applied_tags.add(integer);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the poll to include in the message.
+     *
+     * @param poll The poll to set.
+     * @return The WebHook instance.
+     */
+    public DiscordWebHook poll(Poll poll){
+        this.poll = poll;
+        return this;
+    }
+
+    /**
+     *
+     * @param webhookURL the url of the webhook to send a message to
+     * @return HttpResponse containing feedback information
+     */
+    public CloseableHttpResponse sendToDiscord(final String webhookURL){
+        return NetworkUtils.postRegularWebHookToAPI(webhookURL, this);
+    }
 }
