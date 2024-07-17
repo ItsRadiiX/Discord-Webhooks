@@ -10,7 +10,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import java.util.List;
 
 /**
- * DiscordWebhook allows for easy message sending to your Servers through a webhook!
+ * DiscordWebHook allows for easy message sending to your Servers through a webhook!
  * This class represents a Discord Webhook Message.
  * Make sure to read (<a href="https://github.com/ItsRadiiX/Discord-Webhooks/wiki">the wiki page on our GitHub</a>) to understand how to use this effectively.
  * Also make sure to understand (<a href="https://discord.com/developers/docs/resources/webhook">Discord's documentation of Webhooks</a>).
@@ -19,7 +19,6 @@ import java.util.List;
  * @version 2.0
  * @since 2024-05-19
  */
-
 @SuppressWarnings("unused")
 public class DiscordWebHook {
 
@@ -262,9 +261,109 @@ public class DiscordWebHook {
     }
 
     /**
+     * Gets the content of the webhook message.
      *
-     * @param webhookURL the url of the webhook to send a message to
-     * @return HttpResponse containing feedback information
+     * @return The content.
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * Gets the username to override the default webhook username.
+     *
+     * @return The username.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Gets the avatar URL to override the default webhook avatar.
+     *
+     * @return The avatar URL.
+     */
+    public String getAvatar_url() {
+        return avatar_url;
+    }
+
+    /**
+     * Checks if the message is set to Text-To-Speech.
+     *
+     * @return True if TTS is enabled, false otherwise.
+     */
+    public boolean isTts() {
+        return tts;
+    }
+
+    /**
+     * Gets the list of embedded rich content.
+     *
+     * @return The list of embeds.
+     */
+    public List<Embed> getEmbeds() {
+        return embeds;
+    }
+
+    /**
+     * Gets the allowed mentions for the message.
+     *
+     * @return The allowed mentions.
+     */
+    public Mentions getAllowed_mentions() {
+        return allowed_mentions;
+    }
+
+    /**
+     * Gets the message flags.
+     *
+     * @return The flags.
+     */
+    public int getFlags() {
+        return flags;
+    }
+
+    /**
+     * Gets the name of the thread to create.
+     *
+     * @return The thread name.
+     */
+    public String getThread_name() {
+        return thread_name;
+    }
+
+    /**
+     * Gets the list of tags to apply to the thread.
+     *
+     * @return The list of applied tags.
+     */
+    public List<Integer> getApplied_tags() {
+        return applied_tags;
+    }
+
+    /**
+     * Gets the poll included in the message.
+     *
+     * @return The poll.
+     */
+    public Poll getPoll() {
+        return poll;
+    }
+
+    /**
+     * Gets the list of attachments for the message.
+     *
+     * @return The list of attachments.
+     */
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    /**
+     * Sends the webhook message to the specified Discord webhook URL.
+     *
+     * @param webhookURL The URL of the webhook to send a message to.
+     * @return HttpResponse containing feedback information.
      */
     public CloseableHttpResponse sendToDiscord(final String webhookURL){
         return NetworkUtils.postRegularWebHookToAPI(webhookURL, this);

@@ -1,5 +1,8 @@
 package com.itsradiix.discordwebhook.models.embeds;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -113,7 +116,7 @@ public class Embed {
 	 * @param url The URL when clicked on the title.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setUrl(String url) {
+	public Embed url(String url) {
 		this.url = url;
 		return this;
 	}
@@ -131,7 +134,7 @@ public class Embed {
 	 * @param hexColor The Hex color of the embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setColor(String hexColor) {
+	public Embed color(String hexColor) {
 		this.color = hexToDecimal(hexColor);
 		return this;
 	}
@@ -142,7 +145,7 @@ public class Embed {
 	 * @param decimalColor The decimal color of the embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setColor(int decimalColor) {
+	public Embed color(int decimalColor) {
 		this.color = decimalColor;
 		return this;
 	}
@@ -160,7 +163,7 @@ public class Embed {
 	 * @param timestamp The timestamp displayed in the footer.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setTimestamp(String timestamp) {
+	public Embed timestamp(String timestamp) {
 		this.timestamp = timestamp;
 		return this;
 	}
@@ -171,7 +174,7 @@ public class Embed {
 	 * @param timestamp The timestamp displayed in the footer.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setTimestamp(LocalDateTime timestamp) {
+	public Embed timestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp.toString();
 		return this;
 	}
@@ -181,7 +184,7 @@ public class Embed {
 	 *
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setTimestampNow() {
+	public Embed timestampNow() {
 		this.timestamp = LocalDateTime.now().toString();
 		return this;
 	}
@@ -199,7 +202,7 @@ public class Embed {
 	 * @param footer The Footer object of an embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setFooter(Footer footer) {
+	public Embed footer(Footer footer) {
 		this.footer = footer;
 		return this;
 	}
@@ -217,7 +220,7 @@ public class Embed {
 	 * @param thumbnail The Thumbnail object of an embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setThumbnail(Thumbnail thumbnail) {
+	public Embed thumbnail(Thumbnail thumbnail) {
 		this.thumbnail = thumbnail;
 		return this;
 	}
@@ -235,7 +238,7 @@ public class Embed {
 	 * @param image The Image object of an embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setImage(Image image) {
+	public Embed image(Image image) {
 		this.image = image;
 		return this;
 	}
@@ -253,7 +256,7 @@ public class Embed {
 	 * @param author The Author object of an embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setAuthor(Author author) {
+	public Embed author(Author author) {
 		this.author = author;
 		return this;
 	}
@@ -271,7 +274,7 @@ public class Embed {
 	 * @param fields The list of Fields of an embedded message.
 	 * @return The Embed instance for method chaining.
 	 */
-	public Embed setFields(List<Field> fields) {
+	public Embed fields(List<Field> fields) {
 		this.fields = fields;
 		return this;
 	}

@@ -1,5 +1,7 @@
 package com.itsradiix.discordwebhook.models;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +44,13 @@ public class Mentions {
             if (this.users.contains(user)) continue;
             this.users.add(user);
         }
+    }
+
+    public @Nullable List<String> getParse() {
+        return parse;
+    }
+
+    public @Nullable List<String> getUsers() {
+        return users;
     }
 }
