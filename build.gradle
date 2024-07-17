@@ -64,9 +64,6 @@ publishing {
 shadowJar {
     archiveClassifier.set('')
     mergeServiceFiles()
-    manifest {
-        attributes 'Main-Class': 'com.itsradiix.MainClass'
-    }
 }
 
 tasks.build {
