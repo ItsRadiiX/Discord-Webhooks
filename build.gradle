@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.0'
+}
+
+group = 'com.itsradiix'
+version = '2.1'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.3.1'
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                name = 'Discord Webhook API'
+                description = 'A Discord Webhook API'
+                url = 'https://github.com/ItsRadiiX/Discord-Webhooks'
+                scm {
+                    url = 'https://github.com/ItsRadiiX/Discord-Webhooks'
+                    connection = 'scm:git:git://github.com/ItsRadiiX/Discord-Webhooks.git'
+                    developerConnection = 'scm:git:ssh://github.com/ItsRadiiX/Discord-Webhooks.git'
+                }
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/license/mit'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'ItsRadiiX'
+                        name = 'Bryan Suk'
+                        email = 'mail@bryansuk.nl'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri('https://maven.pkg.github.com/ItsRadiiX/Discord-Webhooks')
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    mergeServiceFiles()
+    manifest {
+        attributes 'Main-Class': 'com.itsradiix.MainClass'
+    }
+}
+
+tasks.build {
+    dependsOn shadowJar
+}
