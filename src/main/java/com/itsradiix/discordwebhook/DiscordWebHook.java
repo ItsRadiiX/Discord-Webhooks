@@ -368,4 +368,15 @@ public class DiscordWebHook {
     public CloseableHttpResponse sendToDiscord(final String webhookURL){
         return NetworkUtils.postRegularWebHookToAPI(webhookURL, this);
     }
+
+    /**
+     * Sends the webhook message to the specified Discord webhook URL in a thread.
+     *
+     * @param webhookURL The URL of the webhook to send a message to.
+     * @param threadId The ID of the thread to send the message to.
+     * @return HttpResponse containing feedback information.
+     */
+    public CloseableHttpResponse sendToDiscord(final String webhookURL, final Long threadId){
+        return NetworkUtils.postThreadWebHookToAPI(webhookURL, this, threadId);
+    }
 }
