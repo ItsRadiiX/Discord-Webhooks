@@ -82,6 +82,34 @@ public final class NetworkUtils {
         } catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * The postToAPI method can be used to post data to the API.
+     * @param route This is the used route to get data from the API.
+     * @param discordWebHook This is the JSON Object as string that will be posted to the API
+     * @param threadId This is the Thread ID that the message will be sent to.
+     * @return Returns the response the API gave.
+     */
+    public static CloseableHttpResponse postThreadWebHookToAPI(final String route, DiscordWebHook discordWebHook, long threadId) {
+
+        Callable<CloseableHttpResponse> callable = () -> {
+            try (CloseableHttpClient httpClient = createDefault()) {
+                HttpPost upload = new HttpPost(route + "?thread_id=" + threadId);
+                upload.setEntity(new StringEntity(serializeObject(discordWebHook)));
+                upload.setHeader("Content-Type", "application/json");
+                upload.setHeader("Accept","application/json");
+
+                return httpClient.execute(upload);
+            }
+        };
+
+        try {
+            Future<CloseableHttpResponse> future = executorService.submit(callable);
+            return future.get();
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
 
     }
 
